@@ -3,8 +3,14 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
+from PIL import Image
 
 st.set_page_config(layout="wide")
+
+# Display logo
+logo = Image.open("logo.png")
+st.image(logo, width=180)
+
 st.title("Catapulta.ai Credit Scoring Dashboard")
 
 st.markdown("This dashboard uses synthetic gig economy data to estimate a rider's credit risk and visualize model insights.")
@@ -79,15 +85,13 @@ if st.session_state.history:
     st.subheader("Prediction History")
     st.dataframe(pd.DataFrame(st.session_state.history))
 
-# Feature importance chart
+# Feature importance chart (simplified)
 st.subheader("Model Feature Importance")
 importances = model.feature_importances_
 features = X.columns
-fig, ax = plt.subplots()
-ax.barh(features, importances)
-ax.set_xlabel("Importance")
-ax.set_title("Random Forest Feature Importance")
-st.pyplot(fig)
+importance_df = pd.DataFrame({"Feature": features, "Importance": importances})
+importance_df = importance_df.sort_values(by="Importance", ascending=False)
+st.bar_chart(importance_df.set_index("Feature"))
 
 # Explanation section
 with st.expander("📘 Feature Explanations"):
@@ -106,4 +110,5 @@ with st.expander("📘 Feature Explanations"):
 # Optional: Show raw data sample
 with st.expander("📊 View Synthetic Training Data"):
     st.dataframe(data.head(20))
+
 
