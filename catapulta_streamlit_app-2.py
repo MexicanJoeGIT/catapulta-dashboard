@@ -6,7 +6,14 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 st.set_page_config(layout="wide")
-
+# Apply white background
+st.markdown("""
+    <style>
+    .main {
+        background-color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
 # Display logo
 logo = Image.open("logo.png")
 st.image(logo, width=180)
