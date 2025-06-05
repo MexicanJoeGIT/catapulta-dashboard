@@ -6,14 +6,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 st.set_page_config(layout="wide")
-# Apply white background
-st.markdown("""
-    <style>
-    .main {
-        background-color: light green;
-    }
-    </style>
-""", unsafe_allow_html=True)
+
 # Display logo
 logo = Image.open("logo.png")
 st.image(logo, width=360)
@@ -72,6 +65,7 @@ if st.sidebar.button("Predecir solvencia crediticia"):
     probability = model.predict_proba(features)[0][1]
 
     result = {
+        "Username": username,
         "Entregas": weekly_deliveries,
         "Rating": avg_rating,
         "Dias": days_active_per_week,
@@ -85,9 +79,9 @@ if st.sidebar.button("Predecir solvencia crediticia"):
     st.session_state.history.append(result)
 
     if prediction == 1:
-        st.success(f"✅ Aprobado: Alta solvencia crediticia con probabilidad de pago de{probability:.2f}")
+        st.success(f"{username}✅ Aprobado: Alta solvencia crediticia con probabilidad de pago de{probability:.2f}")
     else:
-        st.error(f"❌ NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
+        st.error(f"{username}❌ NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
 
 # Show prediction history
 if st.session_state.history:
