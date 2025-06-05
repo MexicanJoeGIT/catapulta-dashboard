@@ -17,7 +17,7 @@ st.markdown("Este dashboard utiliza datos de la industria de delivery para estim
 
 # Train model on synthetic data
 np.random.seed(42)
-n_samples = 5000
+n_samples = 1000
 
 data = pd.DataFrame({
     'weekly_deliveries': np.random.poisson(lam=30, size=n_samples),
