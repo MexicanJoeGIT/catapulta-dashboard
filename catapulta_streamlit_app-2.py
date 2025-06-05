@@ -54,6 +54,8 @@ if 'history' not in st.session_state:
 
 # Sidebar inputs
 st.sidebar.header("Inputs Perfil del Rider")
+print("Enter gig worker profile:")
+username = input("Rider ID o Username: ")
 weekly_deliveries = st.sidebar.slider("Entregas Semanales", 0, 100, 30)
 avg_rating = st.sidebar.slider("Calificación Promedio (1.0 - 5.0)", 1.0, 5.0, 4.5, 0.1)
 days_active_per_week = st.sidebar.slider("Dias Activos por Semana", 0, 7, 5)
@@ -89,7 +91,7 @@ if st.sidebar.button("Predecir solvencia crediticia"):
 
 # Show prediction history
 if st.session_state.history:
-    st.subheader("Hostorial de predicciones")
+    st.subheader("Historial de predicciones")
     st.dataframe(pd.DataFrame(st.session_state.history))
 
 # Feature importance chart (simplified with short names)
