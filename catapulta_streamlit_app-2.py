@@ -47,8 +47,6 @@ if 'history' not in st.session_state:
 
 # Sidebar inputs
 st.sidebar.header("Inputs Perfil del Rider")
-print("Enter gig worker profile:")
-username = input("Rider ID o Username: ")
 weekly_deliveries = st.sidebar.slider("Entregas Semanales", 0, 100, 30)
 avg_rating = st.sidebar.slider("Calificación Promedio (1.0 - 5.0)", 1.0, 5.0, 4.5, 0.1)
 days_active_per_week = st.sidebar.slider("Dias Activos por Semana", 0, 7, 5)
@@ -65,7 +63,6 @@ if st.sidebar.button("Predecir solvencia crediticia"):
     probability = model.predict_proba(features)[0][1]
 
     result = {
-        "Username": username,
         "Entregas": weekly_deliveries,
         "Rating": avg_rating,
         "Dias": days_active_per_week,
