@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 st.markdown("""
     <style>
     .main {
-        background-color: gray;
+        background-color: white;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -24,7 +24,7 @@ st.markdown("Este dashboard utiliza datos sintéticos de la gig economy para est
 
 # Train model on synthetic data
 np.random.seed(42)
-n_samples = 2000
+n_samples = 1000
 
 data = pd.DataFrame({
     'weekly_deliveries': np.random.poisson(lam=30, size=n_samples),
@@ -85,7 +85,7 @@ if st.sidebar.button("Predecir solvencia crediticia"):
     if prediction == 1:
         st.success(f"✅ Aprobado: Alta solvencia crediticia con probabilidad de pago de{probability:.2f}")
     else:
-        st.error(f"❌  NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
+        st.error(f"❌ NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
 
 # Show prediction history
 if st.session_state.history:
