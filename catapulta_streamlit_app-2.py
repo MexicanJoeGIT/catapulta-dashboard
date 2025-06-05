@@ -6,15 +6,9 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 st.set_page_config(layout="wide")
-# Apply white background
-st.markdown("""
-    <style>
-    .main {
-        background-color: white;
-    }
-    </style>
-""", unsafe_allow_html=True)
-st.title("Catapulta.ai Credit Scoring Dashboard")
+# Display logo
+logo = Image.open("logo.png")
+st.image(logo, width=200)
 
 st.markdown("Este dashboard utiliza datos sintéticos de la gig economy para estimar el riesgo crediticio de un rider y visualizar información del modelo.")
 
@@ -79,9 +73,9 @@ if st.sidebar.button("Predecir solvencia crediticia"):
     st.session_state.history.append(result)
 
     if prediction == 1:
-        st.success(f"✅ Aprobado: Alta solvencia crediticia con probabilidad de pago de{probability:.2f}")
+        st.success(f"✅ Aprobado: Alta solvencia crediticia con probabilidad de pago de {probability:.2f}%")
     else:
-        st.error(f"❌ NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
+        st.error(f"❌ NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}%")
 
 # Show prediction history
 if st.session_state.history:
