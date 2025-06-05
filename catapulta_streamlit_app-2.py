@@ -14,7 +14,7 @@ st.markdown("Este dashboard utiliza datos sintéticos de la gig economy para est
 
 # Train model on synthetic data
 np.random.seed(42)
-n_samples = 1000
+n_samples = 4000
 
 data = pd.DataFrame({
     'weekly_deliveries': np.random.poisson(lam=30, size=n_samples),
@@ -98,7 +98,7 @@ with st.expander("📘 Explicación Inputs Rider"):
 | Input | Que mide | Porque importa |
 |---------|------------------|-----------------|
 | Entregas Semanales | Numero de entregas completadas en una semana | Indica productividad y capacidad de generación de ingreso |
-| Rating Promedio| Rating promedio del cliente | Refleja confianza y calidad de seervicio |
+| Rating Promedio| Rating promedio del cliente | Refleja confianza y calidad de servicio |
 | Dias activo por semana| Frecuancia de trabajo semanal | Un mayor compromiso sugiere ingresos estables|
 | Distancia recorrida semanalmente | Kilometros recorridos semanalmente| Proxy de volumen de trabajo y compromiso |
 | Puntaje Smartphone|Calidad de Hardware (1=basico, 10=high-end) | Indica preparación digital y profesionalismo |
