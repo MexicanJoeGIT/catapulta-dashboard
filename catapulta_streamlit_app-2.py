@@ -103,7 +103,7 @@ importance_df = importance_df.sort_values(by="Importance", ascending=False)
 st.bar_chart(importance_df.set_index("Feature"))
 
 # Explanation section
-with st.subheader("📘 Explicación Inputs Rider"):
+with st.expander("📘 Explicación Inputs Rider"):
     st.markdown("""
 | Input | Que mide | Porque importa |
 |---------|------------------|-----------------|
