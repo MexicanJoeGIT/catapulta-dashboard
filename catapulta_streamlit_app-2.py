@@ -89,6 +89,21 @@ ax.set_xlabel("Importance")
 ax.set_title("Random Forest Feature Importance")
 st.pyplot(fig)
 
+# Explanation section
+with st.expander("📘 Feature Explanations"):
+    st.markdown("""
+| Feature | What It Measures | Why It Matters |
+|---------|------------------|-----------------|
+| **weekly_deliveries** | Number of weekly orders completed | Indicates productivity and stable income generation |
+| **avg_rating** | Average customer rating | Reflects reliability and quality of service |
+| **days_active_per_week** | Work frequency per week | Higher engagement suggests steady income |
+| **weekly_distance_km** | KM traveled weekly | Proxy for work volume and commitment |
+| **smartphone_model_score** | Tech quality (1=basic, 10=high-end) | Indicates digital readiness and professionalism |
+| **location_stability** | Consistency of work zone | Stable zones mean repeat clients and route efficiency |
+| **fuel_expense_ratio** | % of income spent on fuel | High ratios may signal low profit margins and financial stress |
+    """)
+
 # Optional: Show raw data sample
-with st.expander("View Synthetic Training Data"):
+with st.expander("📊 View Synthetic Training Data"):
     st.dataframe(data.head(20))
+
