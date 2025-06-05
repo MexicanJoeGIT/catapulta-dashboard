@@ -14,10 +14,6 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-# Display logo
-logo = Image.open("logo.png")
-st.image(logo, width=360)
-
 st.title("Catapulta.ai Credit Scoring Dashboard")
 
 st.markdown("Este dashboard utiliza datos sintéticos de la gig economy para estimar el riesgo crediticio de un rider y visualizar información del modelo.")
