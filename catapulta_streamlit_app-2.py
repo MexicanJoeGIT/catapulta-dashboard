@@ -76,9 +76,9 @@ if st.sidebar.button("Predecir solvencia crediticia"):
     st.session_state.history.append(result)
 
     if prediction == 1:
-        st.success(f"{username}✅ Aprobado: Alta solvencia crediticia con probabilidad de pago de{probability:.2f}")
+        st.success(f"✅ Aprobado: Alta solvencia crediticia con probabilidad de pago de{probability:.2f}")
     else:
-        st.error(f"{username}❌ NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
+        st.error(f"❌ NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
 
 # Show prediction history
 if st.session_state.history:
