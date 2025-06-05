@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 st.markdown("""
     <style>
     .main {
-        background-color: gray;
+        background-color: light green;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -20,11 +20,11 @@ st.image(logo, width=360)
 
 st.title("Catapulta.ai Credit Scoring Dashboard")
 
-st.markdown("Este dashboard utiliza datos sintéticos de la gig economy para estimar el riesgo crediticio de un rider y visualizar información del modelo.")
+st.markdown("Este dashboard utiliza datos de la industria de delivery para estimar el riesgo crediticio de un rider y visualizar información del modelo.")
 
 # Train model on synthetic data
 np.random.seed(42)
-n_samples = 2000
+n_samples = 5000
 
 data = pd.DataFrame({
     'weekly_deliveries': np.random.poisson(lam=30, size=n_samples),
@@ -103,7 +103,7 @@ importance_df = importance_df.sort_values(by="Importance", ascending=False)
 st.bar_chart(importance_df.set_index("Feature"))
 
 # Explanation section
-with st.expander("📘 Explicación Inputs Rider"):
+with st.subheader("📘 Explicación Inputs Rider"):
     st.markdown("""
 | Input | Que mide | Porque importa |
 |---------|------------------|-----------------|
