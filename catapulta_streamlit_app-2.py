@@ -8,7 +8,7 @@ from PIL import Image
 st.set_page_config(layout="wide")
 # Display logo
 logo = Image.open("logo.png")
-st.image(logo, width=200)
+st.image(logo, width=250)
 
 st.markdown("Este dashboard utiliza datos sintéticos de la gig economy para estimar el riesgo crediticio de un rider y visualizar información del modelo.")
 
@@ -79,7 +79,7 @@ if st.sidebar.button("Predecir solvencia crediticia"):
 
 # Show prediction history
 if st.session_state.history:
-    st.subheader("Hostorial de predicciones")
+    st.subheader("Historial de predicciones")
     st.dataframe(pd.DataFrame(st.session_state.history))
 
 # Feature importance chart (simplified with short names)
