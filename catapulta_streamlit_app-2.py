@@ -6,18 +6,25 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 st.set_page_config(layout="wide")
-
+# Apply white background
+st.markdown("""
+    <style>
+    .main {
+        background-color: gray;
+    }
+    </style>
+""", unsafe_allow_html=True)
 # Display logo
 logo = Image.open("logo.png")
 st.image(logo, width=360)
 
 st.title("Catapulta.ai Credit Scoring Dashboard")
 
-st.markdown("Este dashboard utiliza datos de la industria de delivery para estimar el riesgo crediticio de un rider y visualizar información del modelo.")
+st.markdown("Este dashboard utiliza datos sintéticos de la gig economy para estimar el riesgo crediticio de un rider y visualizar información del modelo.")
 
 # Train model on synthetic data
 np.random.seed(42)
-n_samples = 1000
+n_samples = 2000
 
 data = pd.DataFrame({
     'weekly_deliveries': np.random.poisson(lam=30, size=n_samples),
@@ -78,11 +85,11 @@ if st.sidebar.button("Predecir solvencia crediticia"):
     if prediction == 1:
         st.success(f"✅ Aprobado: Alta solvencia crediticia con probabilidad de pago de{probability:.2f}")
     else:
-        st.error(f"❌ NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
+        st.error(f"❌  NO Aprobado: Baja solvencia crediticia con probabilidad de pago de {probability:.2f}")
 
 # Show prediction history
 if st.session_state.history:
-    st.subheader("Historial de predicciones")
+    st.subheader("Hostorial de predicciones")
     st.dataframe(pd.DataFrame(st.session_state.history))
 
 # Feature importance chart (simplified with short names)
@@ -112,5 +119,3 @@ with st.expander("📘 Explicación Inputs Rider"):
 # Optional: Show raw data sample
 with st.expander("📊 View Synthetic Training Data"):
     st.dataframe(data.head(20))
-
-
