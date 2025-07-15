@@ -1,5 +1,4 @@
 # Install dependencies (if not already in Colab)
-!pip install -q scikit-learn
 
 import numpy as np
 import pandas as pd
